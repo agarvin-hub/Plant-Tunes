@@ -34,6 +34,35 @@
             width: auto;
             object-fit: contain;
         }
+        /* Custom styles for the split-background hero */
+        .hero-bg-split {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            z-index: 0;
+        }
+        .hero-bg-split img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .hero-bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(248, 250, 249, 0.6) 0%, rgba(248, 250, 249, 1) 100%);
+            z-index: 1;
+        }
+        @media (max-width: 768px) {
+            .hero-bg-split {
+                width: 100%;
+                opacity: 0.3;
+            }
+            .hero-bg-overlay {
+                background: rgba(248, 250, 249, 0.8);
+            }
+        }
     </style>
 </head>
 <body class="bg-botanical text-slate-800">
@@ -55,24 +84,31 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative pt-32 pb-20 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 space-y-6 z-10">
+    <header class="relative pt-32 pb-20 min-h-[80vh] flex items-center overflow-hidden">
+        <!-- Forest Background on the left half -->
+        <div class="hero-bg-split">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=1200" alt="Lush Forest">
+            <div class="hero-bg-overlay"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 w-full relative z-10 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 space-y-6">
                 <h1 class="text-5xl md:text-7xl font-bold text-slate-900 leading-tight">
                     Where <span class="text-green-700 italic serif">Nature</span> Meets <br>Acoustics.
                 </h1>
-                <p class="text-xl text-slate-600 max-w-lg leading-relaxed">
+                <p class="text-xl text-slate-700 max-w-lg leading-relaxed font-medium">
                     The world’s first integrated hanging planter speaker. Clear your floor, hide the wires, and surround yourself with life and sound.
                 </p>
                 <div class="flex space-x-4 pt-4">
                     <button class="bg-green-800 text-white px-8 py-4 rounded-xl text-lg font-bold shadow-lg hover:bg-green-700 transition">Shop Plant Tunes</button>
-                    <button class="border-2 border-slate-200 px-8 py-4 rounded-xl text-lg font-bold hover:bg-white transition">Watch it work</button>
+                    <button class="border-2 border-slate-300 px-8 py-4 rounded-xl text-lg font-bold hover:bg-white transition bg-white/50 backdrop-blur-sm">Watch it work</button>
                 </div>
             </div>
-            <div class="md:w-1/2 mt-12 md:mt-0 relative">
+            <div class="md:w-1/2 mt-12 md:mt-0 relative flex justify-center">
                 <div class="w-full aspect-square rounded-full bg-green-100 absolute -top-10 -right-10 blur-3xl opacity-50"></div>
-                <div class="relative z-10 bg-white p-4 rounded-3xl shadow-2xl rotate-2">
-                    <img src="https://images.unsplash.com/photo-1545239351-ef35f43d514b?auto=format&fit=crop&q=80&w=800" alt="Hanging Plants in modern room" class="w-full h-80 object-cover rounded-2xl shadow-inner">
+                <div class="relative z-10 bg-white p-4 rounded-3xl shadow-2xl rotate-2 max-w-sm">
+                    <!-- This represents the physical product visualization -->
+                    <img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&q=80&w=800" alt="Plant Tunes Device" class="w-full h-80 object-cover rounded-2xl shadow-inner">
                 </div>
             </div>
         </div>
@@ -130,7 +166,7 @@
                             <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" class="w-10 h-10 rounded-full border-2 border-green-900 object-cover" alt="User">
                             <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop" class="w-10 h-10 rounded-full border-2 border-green-900 object-cover" alt="User">
                         </div>
-                        <span class="text-sm font-semibold uppercase tracking-wider">Trusted by 2,000+ Plant Parents</span>
+                        <span class="text-sm font-semibold uppercase tracking-wider text-green-100">Trusted by 2,000+ Plant Parents</span>
                     </div>
                 </div>
             </div>
@@ -172,7 +208,7 @@
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="relative">
                     <div class="absolute -inset-4 bg-green-100 rounded-full blur-2xl opacity-30"></div>
-                    <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&q=80&w=800" alt="Close up of ceramic texture" class="relative rounded-3xl shadow-xl h-[500px] w-full object-cover">
+                    <img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&q=80&w=800" alt="Minimalist ceramic plant pot with healthy green leaves" class="relative rounded-3xl shadow-xl h-[500px] w-full object-cover">
                 </div>
                 <div class="flex flex-col justify-center space-y-6">
                     <h2 class="text-4xl font-bold">Crafted for Excellence.</h2>
@@ -189,7 +225,7 @@
                             <span>Hi-Fi Bluetooth 5.2 connectivity</span>
                         </li>
                         <li class="flex items-center space-x-3 text-slate-700">
-                            <span class="w-2 h-2 bg-green-600 rounded-full"></span>
+                            <span class="text-green-600 mr-2">•</span>
                             <span>App-controlled ambient light ring</span>
                         </li>
                     </ul>
