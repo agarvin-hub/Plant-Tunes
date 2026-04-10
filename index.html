@@ -3,193 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plant Tunes | Elevate Your Sound & Greenery</title>
+    <title>Plant Tunes | Harmony of Nature & Sound</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
-        
-        :root {
-            --forest-green: #2D5A27;
-            --off-white: #F9FBF9;
-        }
-
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--off-white);
-            color: #1a1a1a;
+            scroll-behavior: smooth;
         }
-
-        h1, h2, .brand-font {
+        .serif {
             font-family: 'Playfair Display', serif;
         }
-
-        .hero-gradient {
-            background: linear-gradient(rgba(45, 90, 39, 0.8), rgba(45, 90, 39, 0.6)), url('https://images.unsplash.com/photo-1545241047-6083a3684587?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.9);
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
+        .bg-botanical {
+            background-color: #f8faf9;
+            background-image: radial-gradient(#d1dbd4 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+        }
+        .green-gradient {
+            background: linear-gradient(135deg, #2d5a27 0%, #1a3c1a 100%);
+        }
+        .logo-img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+        /* Custom styles for the split-background hero */
+        .hero-bg-split {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60%;
+            height: 100%;
+            z-index: 0;
+        }
+        .hero-bg-split img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .hero-bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(248, 250, 249, 0.1) 0%, rgba(248, 250, 249, 0.8) 50%, rgba(248, 250, 249, 1) 100%);
+            z-index: 1;
+        }
+        @media (max-width: 768px) {
+            .hero-bg-split {
+                width: 100%;
+                opacity: 0.5;
+            }
+            .hero-bg-overlay {
+                background: rgba(248, 250, 249, 0.7);
+            }
+        }
     </style>
 </head>
-<body class="antialiased">
+<body class="bg-botanical text-slate-800">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-green-100">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <i class="fas fa-seedling text-green-700 text-2xl"></i>
-                <span class="text-2xl font-bold text-green-900 brand-font tracking-tight">Plant Tunes</span>
+    <nav class="fixed w-full z-50 glass py-4">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img src="image_4ed8b7.png" alt="Plant Tunes Logo" class="logo-img" onerror="this.style.display='none'">
+                <span class="text-2xl font-bold tracking-tight text-green-900">Plant Tunes</span>
             </div>
-            <div class="hidden md:flex space-x-8 font-medium text-gray-600">
-                <a href="#problem" class="hover:text-green-700 transition">The Problem</a>
+            <div class="hidden md:flex space-x-8 font-medium">
                 <a href="#benefits" class="hover:text-green-700 transition">Benefits</a>
+                <a href="#gallery" class="hover:text-green-700 transition">Styles</a>
                 <a href="#design" class="hover:text-green-700 transition">Design</a>
+                <a href="#wellness" class="hover:text-green-700 transition">Wellness</a>
             </div>
-            <button class="bg-green-700 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-800 transition shadow-lg shadow-green-900/20">
-                Pre-Order
-            </button>
+            <button class="bg-green-800 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition">Pre-Order</button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative h-screen flex items-center justify-center text-center text-white hero-gradient">
-        <div class="max-w-4xl px-6">
-            <h1 class="text-5xl md:text-7xl mb-6 leading-tight">Your Corners, <br><span class="italic">Reimagined.</span></h1>
-            <p class="text-xl md:text-2xl mb-10 font-light opacity-90 leading-relaxed">
-                The world’s first hanging planter with integrated 360° spatial audio. 
-                Clear the floor, hide the wires, and find your focus.
-            </p>
-            <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="#design" class="bg-white text-green-900 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition">Explore the Design</a>
-                <a href="#" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition">Watch it in Action</a>
-            </div>
+    <header class="relative pt-32 pb-20 min-h-[90vh] flex items-center overflow-hidden">
+        <div class="hero-bg-split">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=1200" alt="Lush Forest">
+            <div class="hero-bg-overlay"></div>
         </div>
-        <div class="absolute bottom-10 animate-bounce">
-            <i class="fas fa-chevron-down text-2xl"></i>
+
+        <div class="max-w-7xl mx-auto px-6 w-full relative z-10 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 space-y-6">
+                <h1 class="text-5xl md:text-7xl font-bold text-slate-900 leading-tight">
+                    Where <span class="text-green-700 italic serif">Nature</span> Meets <br>Acoustics.
+                </h1>
+                <p class="text-xl text-slate-700 max-w-lg leading-relaxed font-medium">
+                    The world’s first integrated hanging planter speaker. Clear your floor, hide the wires, and surround yourself with life and sound.
+                </p>
+                <div class="flex space-x-4 pt-4">
+                    <button class="bg-green-800 text-white px-8 py-4 rounded-xl text-lg font-bold shadow-lg hover:bg-green-700 transition">Shop Plant Tunes</button>
+                    <button class="border-2 border-slate-300 px-8 py-4 rounded-xl text-lg font-bold hover:bg-white transition bg-white/50 backdrop-blur-sm">Watch it work</button>
+                </div>
+            </div>
+            <div class="md:w-1/2 mt-12 md:mt-0 relative flex justify-center">
+                <div class="w-full aspect-square rounded-full bg-green-100 absolute -top-10 -right-10 blur-3xl opacity-50"></div>
+                <div class="relative z-10 bg-white p-4 rounded-3xl shadow-2xl rotate-2 max-w-sm">
+                    <img src="https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&q=80&w=800" alt="Green music CD and speakers" class="w-full h-80 object-cover rounded-2xl shadow-inner">
+                </div>
+            </div>
         </div>
     </header>
 
-    <!-- The Problem Section -->
-    <section id="problem" class="py-24 bg-white">
+    <!-- Problem & Solution -->
+    <section id="benefits" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="text-4xl text-green-900 mb-6">Stop Fighting the Eyesore</h2>
-                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-                        We all have that one corner. A beautiful hanging plant above, and a clunky, dust-collecting speaker below. A spiderweb of wires ruins the aesthetic of your home and steals your floor space.
-                    </p>
-                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                        <strong>Plant Tunes</strong> destroys the eyesore. By combining high-fidelity audio with a premium hanging vessel, we give you back your room and simplify your life.
-                    </p>
-                    <div class="flex items-center space-x-4 text-green-700 font-semibold">
-                        <i class="fas fa-check-circle"></i> <span>No more floor-standing clutter</span>
-                        <i class="fas fa-check-circle"></i> <span>Hidden cable management</span>
-                    </div>
-                </div>
-                <div class="bg-gray-100 rounded-3xl p-8 relative overflow-hidden shadow-inner">
-                    <img src="https://images.unsplash.com/photo-1512428559083-a400aeead895?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hanging Plant" class="rounded-2xl shadow-2xl">
-                    <div class="absolute bottom-12 right-12 glass-card p-4 rounded-xl shadow-lg border border-white/50">
-                        <p class="text-green-900 font-bold italic">"Finally, the wires are gone."</p>
-                    </div>
-                </div>
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">De-clutter your sanctuary.</h2>
+                <p class="text-lg text-slate-600">Why choose between your favorite houseplant and your favorite playlist? Plant Tunes combines them into a single, elegant fixture.</p>
             </div>
-        </div>
-    </section>
 
-    <!-- Benefits Section -->
-    <section id="benefits" class="py-24 bg-green-50">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-4xl text-green-900 mb-16">Audio that Heals</h2>
             <div class="grid md:grid-cols-3 gap-12">
-                <div class="p-8 bg-white rounded-3xl shadow-sm hover:shadow-xl transition-shadow border border-green-100">
-                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-green-700 text-2xl mb-6 mx-auto">
-                        <i class="fas fa-brain"></i>
+                <div class="space-y-4">
+                    <div class="w-12 h-12 bg-green-100 text-green-700 flex items-center justify-center rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Improve Focus</h3>
-                    <p class="text-gray-600 leading-relaxed">Nature in the room is scientifically proven to improve cognitive function and concentration. Perfect for your home office.</p>
+                    <h3 class="text-xl font-bold">Zero Footprint</h3>
+                    <p class="text-slate-600">Mounts directly into the corner of your ceiling, reclaiming valuable floor and shelf space.</p>
                 </div>
-                <div class="p-8 bg-white rounded-3xl shadow-sm hover:shadow-xl transition-shadow border border-green-100">
-                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-green-700 text-2xl mb-6 mx-auto">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Reduce Anxiety</h3>
-                    <p class="text-gray-600 leading-relaxed">Plants reduce cortisol levels. Whether it's a long workday or a <strong>stressful Eagles game</strong>, keep your heart rate down with a touch of green.</p>
+                <div class="space-y-4 text-center">
+                    <img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&q=80&w=400" alt="Modern Minimalist Pot" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 shadow-md">
+                    <h3 class="text-xl font-bold">Sleek Design</h3>
+                    <p class="text-slate-600">Minimalist aesthetics that fit any room style, from modern to rustic.</p>
                 </div>
-                <div class="p-8 bg-white rounded-3xl shadow-sm hover:shadow-xl transition-shadow border border-green-100">
-                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-green-700 text-2xl mb-6 mx-auto">
-                        <i class="fas fa-music"></i>
+                <div class="space-y-4">
+                    <div class="w-12 h-12 bg-green-100 text-green-700 flex items-center justify-center rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M19 12l2 0"/><path d="M5 12l-2 0"/><path d="M12 19l0 2"/><path d="M12 5l0 -2"/></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Immersive Sound</h3>
-                    <p class="text-gray-600 leading-relaxed">Traditional speakers sit low. Plant Tunes projects audio from above, creating a natural soundstage that fills the entire room.</p>
+                    <h3 class="text-xl font-bold">Acoustic Clarity</h3>
+                    <p class="text-slate-600">The 360-degree downward-firing speaker fills your room with rich, immersive audio.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="design" class="py-24 bg-white">
+    <!-- Styles Gallery -->
+    <section id="gallery" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="text-4xl text-green-900 mb-4">Smart Design. Natural Materials.</h2>
-                <p class="text-gray-600">The perfect marriage of organic form and digital function.</p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="relative group cursor-pointer overflow-hidden rounded-3xl">
-                    <img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Detail" class="w-full h-80 object-cover group-hover:scale-105 transition duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-green-900/80 to-transparent flex items-end p-8">
-                        <div>
-                            <h4 class="text-white text-xl font-bold">Patented Leak-Proof Tech</h4>
-                            <p class="text-white/80 text-sm">Water your plants without worrying about the acoustics.</p>
-                        </div>
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-12">Choose Your Style</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="group overflow-hidden rounded-2xl shadow-lg bg-white transition hover:shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1509423300868-3ef7af99ef2a?auto=format&fit=crop&q=80&w=600" alt="Terracotta Style" class="w-full h-64 object-cover transition group-hover:scale-105">
+                    <div class="p-6">
+                        <h4 class="font-bold text-xl mb-2">Classic Terracotta</h4>
+                        <p class="text-slate-600">Timeless clay finish for a warm, earthy feel.</p>
                     </div>
                 </div>
-                <div class="relative group cursor-pointer overflow-hidden rounded-3xl">
-                    <img src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tech" class="w-full h-80 object-cover group-hover:scale-105 transition duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-green-900/80 to-transparent flex items-end p-8">
-                        <div>
-                            <h4 class="text-white text-xl font-bold">12hr Wireless Life</h4>
-                            <p class="text-white/80 text-sm">Optional cable-free mode for a truly "invisible" look.</p>
-                        </div>
+                <div class="group overflow-hidden rounded-2xl shadow-lg bg-white transition hover:shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1520412099548-6a3ef2005fc5?auto=format&fit=crop&q=80&w=600" alt="Hanging Macrame Style" class="w-full h-64 object-cover transition group-hover:scale-105">
+                    <div class="p-6">
+                        <h4 class="font-bold text-xl mb-2">Boho Weaver</h4>
+                        <p class="text-slate-600">Elegant macrame hanger with an integrated speaker base.</p>
+                    </div>
+                </div>
+                <div class="group overflow-hidden rounded-2xl shadow-lg bg-white transition hover:shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&q=80&w=600" alt="Modern White Pot" class="w-full h-64 object-cover transition group-hover:scale-105">
+                    <div class="p-6">
+                        <h4 class="font-bold text-xl mb-2">Arctic Minimalist</h4>
+                        <p class="text-slate-600">Clean white ceramic for a crisp, high-tech look.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Newsletter -->
-    <section class="py-20 bg-green-900 text-white">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-4xl mb-6">Join the Movement</h2>
-            <p class="text-green-100/80 mb-10 text-lg">Be the first to know when we launch and get an exclusive 20% discount on your first Plant Tune.</p>
-            <form class="flex flex-col md:flex-row gap-4 justify-center" onsubmit="event.preventDefault(); document.getElementById('success').classList.remove('hidden');">
-                <input type="email" placeholder="Your email address" class="px-6 py-4 rounded-full text-gray-900 w-full md:w-96 outline-none focus:ring-2 focus:ring-green-400">
-                <button class="bg-white text-green-900 px-10 py-4 rounded-full font-bold hover:bg-green-100 transition shadow-xl">Notify Me</button>
+    <!-- Wellness Focus -->
+    <section id="wellness" class="py-24 green-gradient text-white">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row gap-16 items-center">
+            <div class="md:w-1/2">
+                <div class="bg-white/10 p-8 rounded-3xl border border-white/20">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-8 italic serif">The Game Day Guardian.</h2>
+                    <p class="text-xl text-green-50 mb-6 leading-relaxed">
+                        We get it. An Eagles game can be high-stakes and high-stress. Studies show that proximity to plants can reduce cortisol levels and sharpen focus.
+                    </p>
+                    <p class="text-xl text-green-50 leading-relaxed">
+                        Plant Tunes creates a calming atmospheric bubble, helping you stay grounded when the score is tight and the tension is high.
+                    </p>
+                    <div class="mt-8 flex items-center space-x-4">
+                        <div class="flex -space-x-2">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" class="w-10 h-10 rounded-full border-2 border-green-900 object-cover" alt="User">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" class="w-10 h-10 rounded-full border-2 border-green-900 object-cover" alt="User">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop" class="w-10 h-10 rounded-full border-2 border-green-900 object-cover" alt="User">
+                        </div>
+                        <span class="text-sm font-semibold uppercase tracking-wider text-green-100">Trusted by 2,000+ Plant Parents</span>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://images.unsplash.com/photo-1525498128493-380d1990a112?auto=format&fit=crop&q=80&w=600" alt="Healthy green plant" class="rounded-3xl shadow-2xl rotate-3 h-96 w-72 object-cover">
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Showcase -->
+    <section id="design" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-green-100 rounded-full blur-2xl opacity-30"></div>
+                    <!-- User Requested Image Added Below -->
+                    <img src="https://lh3.googleusercontent.com/d/1KZyLz7eeP1lUmw5nN-OYRtKGuC-7n6I1" alt="Detailed product design showcase" class="relative rounded-3xl shadow-xl h-[500px] w-full object-cover">
+                </div>
+                <div class="flex flex-col justify-center space-y-6">
+                    <h2 class="text-4xl font-bold">Crafted for Excellence.</h2>
+                    <p class="text-lg text-slate-600 leading-relaxed">
+                        Every Plant Tunes unit is made from sustainably sourced ceramic and features a waterproof inner chamber to protect the electronics while you water your plants.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center space-x-3 text-slate-700">
+                            <span class="w-2 h-2 bg-green-600 rounded-full"></span>
+                            <span>Water-safe internal barrier</span>
+                        </li>
+                        <li class="flex items-center space-x-3 text-slate-700">
+                            <span class="w-2 h-2 bg-green-600 rounded-full"></span>
+                            <span>Hi-Fi Bluetooth 5.2 connectivity</span>
+                        </li>
+                        <li class="flex items-center space-x-3 text-slate-700">
+                            <span class="text-green-600 mr-2">•</span>
+                            <span>App-controlled ambient light ring</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / CTA -->
+    <footer class="bg-slate-900 text-white py-20">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-6xl font-bold mb-8">Ready to clear the clutter?</h2>
+            <p class="text-slate-400 mb-12 max-w-2xl mx-auto text-lg">Join our mailing list to get early access to the Plant Tunes launch and a special founding member discount.</p>
+            
+            <form class="max-w-md mx-auto flex flex-col md:flex-row gap-4 mb-16">
+                <input type="email" placeholder="Enter your email" class="flex-grow px-6 py-4 rounded-xl bg-slate-800 border border-slate-700 focus:outline-none focus:border-green-500 transition text-white">
+                <button type="button" class="bg-green-600 hover:bg-green-500 text-white px-8 py-4 rounded-xl font-bold transition">Notify Me</button>
             </form>
-            <p id="success" class="mt-4 text-green-300 font-semibold hidden">Thanks! We'll reach out soon.</p>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="py-12 bg-white border-t border-gray-100">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-gray-500">
-            <div class="flex items-center space-x-2 mb-4 md:mb-0">
-                <i class="fas fa-seedling text-green-700"></i>
-                <span class="font-bold text-green-900 brand-font">Plant Tunes</span>
-            </div>
-            <p class="text-sm">© 2024 Plant Tunes. Made for people, plants, and Philly sports fans.</p>
-            <div class="flex space-x-6 mt-4 md:mt-0">
-                <a href="#" class="hover:text-green-700"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="hover:text-green-700"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="hover:text-green-700"><i class="fab fa-tiktok"></i></a>
+            <div class="border-t border-slate-800 pt-12 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <img src="image_4ed8b7.png" alt="Plant Tunes Logo" class="logo-img invert opacity-80" onerror="this.style.display='none'">
+                    <span class="text-xl font-bold text-white">Plant Tunes</span>
+                </div>
+                <div class="flex space-x-8">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition">Instagram</a>
+                </div>
+                <p class="mt-4 md:mt-0">© 2024 Plant Tunes Labs. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
