@@ -63,9 +63,6 @@
                 background: rgba(248, 250, 249, 0.7);
             }
         }
-        .step-hidden {
-            display: none;
-        }
     </style>
 </head>
 <body class="bg-botanical text-slate-800">
@@ -82,7 +79,7 @@
                 <a href="#design" class="hover:text-green-700 transition">Design</a>
                 <a href="#wellness" class="hover:text-green-700 transition">Wellness</a>
             </div>
-            <a href="#purchase" class="bg-green-800 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition">Pre-Order</a>
+            <button class="bg-green-800 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition">Pre-Order</button>
         </div>
     </nav>
 
@@ -102,7 +99,7 @@
                     The world’s first integrated hanging planter speaker. Clear your floor, hide the wires, and surround yourself with life and sound.
                 </p>
                 <div class="flex space-x-4 pt-4">
-                    <a href="#purchase" class="bg-green-800 text-white px-8 py-4 rounded-xl text-lg font-bold shadow-lg hover:bg-green-700 transition">Shop Plant Tunes</a>
+                    <button class="bg-green-800 text-white px-8 py-4 rounded-xl text-lg font-bold shadow-lg hover:bg-green-700 transition">Shop Plant Tunes</button>
                     <button class="border-2 border-slate-300 px-8 py-4 rounded-xl text-lg font-bold hover:bg-white transition bg-white/50 backdrop-blur-sm">Watch it work</button>
                 </div>
             </div>
@@ -218,59 +215,61 @@
         </div>
     </section>
 
-    <!-- Purchase Section (Updated with Pre-order Flow) -->
-    <section id="purchase" class="py-24 bg-white border-t border-slate-100 scroll-mt-20">
-        <div class="max-w-xl mx-auto px-6">
-            <div class="bg-slate-50 p-8 md:p-12 rounded-3xl shadow-xl border border-slate-200">
-                <div id="step-1">
-                    <h2 class="text-3xl font-bold mb-2 text-center text-green-900">Pre-Order Now</h2>
-                    <p class="text-slate-600 text-center mb-8">Secure your spot in our first batch of handcrafted speakers.</p>
-                    
-                    <div class="space-y-5">
-                        <div>
-                            <label class="block text-sm font-bold text-slate-700 mb-2">Name</label>
-                            <input type="text" id="preorder-name" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-green-500 focus:outline-none" placeholder="Enter your full name">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-bold text-slate-700 mb-2">Email</label>
-                            <input type="email" id="preorder-email" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-green-500 focus:outline-none" placeholder="you@example.com">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-bold text-slate-700 mb-2">Color Preference</label>
-                            <select id="preorder-color" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-green-500 focus:outline-none">
-                                <option>Botanical Green</option>
-                                <option>Slate Grey</option>
-                                <option>Terracotta Red</option>
-                                <option>Modern White</option>
-                            </select>
-                        </div>
-                        <button onclick="goToStep2()" class="w-full py-4 bg-green-800 text-white rounded-xl font-bold hover:bg-green-700 transition mt-4 shadow-lg">Next Step</button>
-                    </div>
+    <!-- Purchase Section -->
+    <section id="purchase" class="py-24 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col items-center text-center mb-16">
+                <img src="https://lh3.googleusercontent.com/d/1_bCMH1oU3tbbOIJcD7vRjIk80FvfUVg6" alt="Purchase Logo" class="w-24 h-24 mb-6 object-contain">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Start your sonic garden.</h2>
+                <p class="text-lg text-slate-600 max-w-2xl">Bring your home to life with the perfect balance of greenery and high-fidelity sound. Ships worldwide.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Solo Planter -->
+                <div class="p-8 rounded-3xl bg-slate-50 border-2 border-transparent hover:border-green-500 transition-all flex flex-col">
+                    <h3 class="text-2xl font-bold mb-2">The Solo</h3>
+                    <div class="text-4xl font-black text-green-800 mb-6">$25</div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-slate-600">1x Ceramic Planter Speaker</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-slate-600">Premium Ceiling Mount Kit</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-slate-600">2-Year Limited Warranty</span>
+                        </li>
+                    </ul>
+                    <button class="w-full py-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition">Select Solo</button>
                 </div>
 
-                <div id="step-2" class="step-hidden">
-                    <button onclick="goToStep1()" class="text-slate-500 hover:text-slate-800 mb-4 flex items-center text-sm font-medium">
-                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                        Back
-                    </button>
-                    <h2 class="text-3xl font-bold mb-2 text-center text-green-900">Final Details</h2>
-                    <p class="text-slate-600 text-center mb-8">Where should we send your Plant Tunes?</p>
-                    
-                    <div class="space-y-5">
-                        <div>
-                            <label class="block text-sm font-bold text-slate-700 mb-2">Shipping Address</label>
-                            <textarea id="preorder-address" rows="3" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-green-500 focus:outline-none" placeholder="Street address, City, Zip Code"></textarea>
-                        </div>
-                        <div class="bg-green-100 p-4 rounded-xl border border-green-200">
-                            <p class="text-sm text-green-800 font-medium">
-                                To complete your pre-order and secure your founding member price, please use the Venmo link below:
-                            </p>
-                        </div>
-                        <a href="https://venmo.com/u/planttunes" target="_blank" class="block w-full py-4 bg-[#3d95ce] text-white text-center rounded-xl font-bold hover:bg-[#3480b0] transition shadow-lg flex items-center justify-center">
-                            Pay with Venmo
-                        </a>
-                        <p class="text-[10px] text-center text-slate-400 mt-4 italic">Confirming payment ensures your order is prioritized.</p>
-                    </div>
+                <!-- Duo Pack -->
+                <div class="p-8 rounded-3xl bg-green-50 border-2 border-green-200 flex flex-col relative overflow-hidden">
+                    <div class="absolute top-4 right-4 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">Best Value</div>
+                    <h3 class="text-2xl font-bold mb-2">The Sanctuary Duo</h3>
+                    <div class="text-4xl font-black text-green-800 mb-6">$45 <span class="text-lg text-slate-400 font-normal line-through ml-2">$50</span></div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-slate-800 font-medium">2x Ceramic Planter Speakers</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-slate-800 font-medium">Full Room Surround Kit</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-slate-800 font-medium">Priority Shipping</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-slate-800 font-medium">Exclusive Care Guide</span>
+                        </li>
+                    </ul>
+                    <button class="w-full py-4 bg-green-800 text-white rounded-xl font-bold hover:bg-green-700 transition shadow-lg">Select Duo</button>
                 </div>
             </div>
         </div>
@@ -303,39 +302,14 @@
     </footer>
 
     <script>
-        // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
-
-        // Pre-order Step Navigation
-        function goToStep2() {
-            const name = document.getElementById('preorder-name').value;
-            const email = document.getElementById('preorder-email').value;
-            
-            if (!name || !email) {
-                // Simple validation check before proceeding
-                document.getElementById('preorder-name').classList.add('border-red-500');
-                document.getElementById('preorder-email').classList.add('border-red-500');
-                return;
-            }
-
-            document.getElementById('step-1').classList.add('step-hidden');
-            document.getElementById('step-2').classList.remove('step-hidden');
-        }
-
-        function goToStep1() {
-            document.getElementById('step-2').classList.add('step-hidden');
-            document.getElementById('step-1').classList.remove('step-hidden');
-        }
     </script>
 </body>
 </html>
