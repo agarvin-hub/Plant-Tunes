@@ -159,36 +159,41 @@
                         <p class="text-lg text-slate-600">Available in five timeless finishes to complement any interior palette.</p>
                     </div>
                     
-                    <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
                         <div class="group cursor-pointer" onclick="showPage('preorder')">
                             <div class="aspect-square rounded-3xl mb-4 overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-300">
                                 <img src="https://lh3.googleusercontent.com/d/1VpjyauLw2vSbEphY0-a9O_e4BDu6V9ci" alt="Obsidian Black" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                             </div>
-                            <h3 class="text-center font-bold text-slate-800">Obsidian Black</h3>
+                            <h3 class="font-bold text-slate-800">Obsidian Black</h3>
+                            <p class="text-green-700 font-semibold">$35</p>
                         </div>
                         <div class="group cursor-pointer" onclick="showPage('preorder')">
                             <div class="aspect-square rounded-3xl mb-4 overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-300">
                                 <img src="https://lh3.googleusercontent.com/d/1HOfjw6RYQsr4hfFdTsUSbneHyoYYzVII" alt="Modern White" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                             </div>
-                            <h3 class="text-center font-bold text-slate-800">Modern White</h3>
+                            <h3 class="font-bold text-slate-800">Modern White</h3>
+                            <p class="text-green-700 font-semibold">$35</p>
                         </div>
                         <div class="group cursor-pointer" onclick="showPage('preorder')">
                             <div class="aspect-square rounded-3xl mb-4 overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-300">
                                 <img src="https://lh3.googleusercontent.com/d/1_mObCghjczDcjm2FEhGE-_eoJUSdysqQ" alt="Slate Grey" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                             </div>
-                            <h3 class="text-center font-bold text-slate-800">Slate Grey</h3>
+                            <h3 class="font-bold text-slate-800">Slate Grey</h3>
+                            <p class="text-green-700 font-semibold">$35</p>
                         </div>
                         <div class="group cursor-pointer" onclick="showPage('preorder')">
                             <div class="aspect-square rounded-3xl mb-4 overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-300">
                                 <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400" alt="Forest Green" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                             </div>
-                            <h3 class="text-center font-bold text-slate-800">Forest Green</h3>
+                            <h3 class="font-bold text-slate-800">Forest Green</h3>
+                            <p class="text-green-700 font-semibold">$35</p>
                         </div>
                         <div class="group cursor-pointer" onclick="showPage('preorder')">
                             <div class="aspect-square rounded-3xl mb-4 overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-300">
                                 <img src="https://lh3.googleusercontent.com/d/1lPSSFzijJx4NW9O15ePOc7M4jRRexAVy" alt="Midnight Blue" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                             </div>
-                            <h3 class="text-center font-bold text-slate-800">Midnight Blue</h3>
+                            <h3 class="font-bold text-slate-800">Midnight Blue</h3>
+                            <p class="text-green-700 font-semibold">$35</p>
                         </div>
                     </div>
                 </div>
@@ -339,44 +344,4 @@
 
         function prevStep() {
             document.getElementById('preorder-step-2').classList.add('hidden');
-            document.getElementById('preorder-step-1').classList.remove('hidden');
-            document.getElementById('progress-bar').style.width = '33%';
-        }
-
-        function finalSubmit() {
-            // Get form values
-            const name = document.getElementById('p-name').value;
-            const email = document.getElementById('p-email').value;
-            const address = document.getElementById('p-address').value;
-            const color = document.querySelector('input[name="color"]:checked').value;
-
-            // Prepare email content
-            const recipient1 = "agarvin@sch.org";
-            const recipient2 = "tbland@sch.org";
-            const subject = encodeURIComponent(`New Plant Tunes Pre-Order: ${name}`);
-            const body = encodeURIComponent(
-                `New Pre-Order Received!\n\n` +
-                `Name: ${name}\n` +
-                `Email: ${email}\n` +
-                `Color Selected: ${color}\n` +
-                `Shipping Address: ${address}\n\n` +
-                `--- End of Order ---`
-            );
-
-            // Construct mailto link
-            const mailtoLink = `mailto:${recipient1},${recipient2}?subject=${subject}&body=${body}`;
-
-            // Open email client
-            window.location.href = mailtoLink;
-
-            // Open Venmo in a new tab
-            window.open('https://venmo.com/u/planttunes', '_blank');
-
-            // Show success UI
-            document.getElementById('preorder-step-2').classList.add('hidden');
-            document.getElementById('preorder-success').classList.remove('hidden');
-            document.getElementById('progress-bar').style.width = '100%';
-        }
-    </script>
-</body>
-</html>
+            document.getElementById('preorder-step-1').
