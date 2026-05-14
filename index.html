@@ -136,7 +136,7 @@
                             <p class="text-slate-600">Mounts directly into the corner of your ceiling, reclaiming valuable floor and shelf space.</p>
                         </div>
                         <div class="space-y-4 text-center">
-                            <img src="https://lh3.googleusercontent.com/d/14kW_TE8SU6WBg-IxbJ1Vb19dRSjret_5" alt="Sleek Plant Tunes design" class="w-full h-48 mx-auto rounded-2xl object-cover mb-4 shadow-lg border-4 border-white">
+                            <img src="https://lh3.googleusercontent.com/d/148pl4KdkCk1Na93gZJN581F6ZVgzbzjG" alt="Sleek Plant Tunes design" class="w-full h-48 mx-auto rounded-2xl object-cover mb-4 shadow-lg border-4 border-white">
                             <h3 class="text-xl font-bold">Sleek Design</h3>
                             <p class="text-slate-600">Minimalist aesthetics that fit any room style, from modern to rustic.</p>
                         </div>
@@ -344,4 +344,44 @@
 
         function prevStep() {
             document.getElementById('preorder-step-2').classList.add('hidden');
-            document.getElementById('preorder-step-1').
+            document.getElementById('preorder-step-1').classList.remove('hidden');
+            document.getElementById('progress-bar').style.width = '33%';
+        }
+
+        function finalSubmit() {
+            // Get form values
+            const name = document.getElementById('p-name').value;
+            const email = document.getElementById('p-email').value;
+            const address = document.getElementById('p-address').value;
+            const color = document.querySelector('input[name="color"]:checked').value;
+
+            // Prepare email content
+            const recipient1 = "agarvin@sch.org";
+            const recipient2 = "tbland@sch.org";
+            const subject = encodeURIComponent(`New Plant Tunes Pre-Order: ${name}`);
+            const body = encodeURIComponent(
+                `New Pre-Order Received!\n\n` +
+                `Name: ${name}\n` +
+                `Email: ${email}\n` +
+                `Color Selected: ${color}\n` +
+                `Shipping Address: ${address}\n\n` +
+                `--- End of Order ---`
+            );
+
+            // Construct mailto link
+            const mailtoLink = `mailto:${recipient1},${recipient2}?subject=${subject}&body=${body}`;
+
+            // Open email client
+            window.location.href = mailtoLink;
+
+            // Open Venmo in a new tab
+            window.open('https://venmo.com/u/planttunes', '_blank');
+
+            // Show success UI
+            document.getElementById('preorder-step-2').classList.add('hidden');
+            document.getElementById('preorder-success').classList.remove('hidden');
+            document.getElementById('progress-bar').style.width = '100%';
+        }
+    </script>
+</body>
+</html>
