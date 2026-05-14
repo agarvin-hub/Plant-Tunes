@@ -78,7 +78,7 @@
             </div>
             <div class="hidden md:flex space-x-8 font-medium" id="nav-links">
                 <a href="#benefits" class="hover:text-green-700 transition">Benefits</a>
-                <a href="#design" class="hover:text-green-700 transition">Design</a>
+                <a href="#styles" class="hover:text-green-700 transition">Styles</a>
                 <a href="#wellness" class="hover:text-green-700 transition">Wellness</a>
             </div>
             <button onclick="showPage('preorder')" class="bg-green-800 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition">Pre-Order</button>
@@ -146,6 +146,54 @@
                             </div>
                             <h3 class="text-xl font-bold">Acoustic Clarity</h3>
                             <p class="text-slate-600">The 360-degree downward-firing speaker fills your room with rich, immersive audio.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Choose Your Style Section -->
+            <section id="styles" class="py-24 bg-slate-50">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="text-center max-w-2xl mx-auto mb-16">
+                        <h2 class="text-4xl font-bold mb-4">Choose your style.</h2>
+                        <p class="text-lg text-slate-600">Available in five timeless finishes to complement any interior palette.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+                        <!-- Black -->
+                        <div class="group cursor-pointer" onclick="showPage('preorder')">
+                            <div class="aspect-square rounded-3xl mb-4 overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-300">
+                                <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&q=80&w=400" alt="Black Speaker" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            </div>
+                            <h3 class="text-center font-bold text-slate-800">Obsidian Black</h3>
+                        </div>
+                        <!-- White -->
+                        <div class="group cursor-pointer" onclick="showPage('preorder')">
+                            <div class="aspect-square rounded-3xl mb-4 overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-300">
+                                <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=400" alt="White Speaker" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            </div>
+                            <h3 class="text-center font-bold text-slate-800">Modern White</h3>
+                        </div>
+                        <!-- Grey -->
+                        <div class="group cursor-pointer" onclick="showPage('preorder')">
+                            <div class="aspect-square rounded-3xl mb-4 overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-300">
+                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=400" alt="Grey Speaker" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            </div>
+                            <h3 class="text-center font-bold text-slate-800">Slate Grey</h3>
+                        </div>
+                        <!-- Dark Green -->
+                        <div class="group cursor-pointer" onclick="showPage('preorder')">
+                            <div class="aspect-square rounded-3xl mb-4 overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-300">
+                                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400" alt="Dark Green Speaker" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            </div>
+                            <h3 class="text-center font-bold text-slate-800">Forest Green</h3>
+                        </div>
+                        <!-- Dark Blue -->
+                        <div class="group cursor-pointer" onclick="showPage('preorder')">
+                            <div class="aspect-square rounded-3xl mb-4 overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-300">
+                                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=400" alt="Dark Blue Speaker" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            </div>
+                            <h3 class="text-center font-bold text-slate-800">Midnight Blue</h3>
                         </div>
                     </div>
                 </div>
@@ -248,18 +296,26 @@
                             </div>
                             <div class="space-y-2">
                                 <label class="block text-sm font-bold text-slate-700">Color</label>
-                                <div class="grid grid-cols-3 gap-4">
+                                <div class="grid grid-cols-3 md:grid-cols-5 gap-3">
                                     <label class="cursor-pointer">
                                         <input type="radio" name="color" value="black" class="hidden peer">
-                                        <div class="py-4 text-center rounded-xl border-2 border-slate-100 bg-white peer-checked:border-green-600 peer-checked:bg-green-50 transition font-bold text-slate-600 peer-checked:text-green-700">Black</div>
+                                        <div class="py-3 text-xs text-center rounded-xl border-2 border-slate-100 bg-white peer-checked:border-green-600 peer-checked:bg-green-50 transition font-bold text-slate-600 peer-checked:text-green-700">Black</div>
                                     </label>
                                     <label class="cursor-pointer">
-                                        <input type="radio" name="color" value="blue" class="hidden peer" checked>
-                                        <div class="py-4 text-center rounded-xl border-2 border-slate-100 bg-white peer-checked:border-green-600 peer-checked:bg-green-50 transition font-bold text-slate-600 peer-checked:text-green-700">Blue</div>
+                                        <input type="radio" name="color" value="white" class="hidden peer">
+                                        <div class="py-3 text-xs text-center rounded-xl border-2 border-slate-100 bg-white peer-checked:border-green-600 peer-checked:bg-green-50 transition font-bold text-slate-600 peer-checked:text-green-700">White</div>
                                     </label>
                                     <label class="cursor-pointer">
-                                        <input type="radio" name="color" value="yellow" class="hidden peer">
-                                        <div class="py-4 text-center rounded-xl border-2 border-slate-100 bg-white peer-checked:border-green-600 peer-checked:bg-green-50 transition font-bold text-slate-600 peer-checked:text-green-700">Yellow</div>
+                                        <input type="radio" name="color" value="grey" class="hidden peer">
+                                        <div class="py-3 text-xs text-center rounded-xl border-2 border-slate-100 bg-white peer-checked:border-green-600 peer-checked:bg-green-50 transition font-bold text-slate-600 peer-checked:text-green-700">Grey</div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="color" value="green" class="hidden peer" checked>
+                                        <div class="py-3 text-xs text-center rounded-xl border-2 border-slate-100 bg-white peer-checked:border-green-600 peer-checked:bg-green-50 transition font-bold text-slate-600 peer-checked:text-green-700">Green</div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="color" value="blue" class="hidden peer">
+                                        <div class="py-3 text-xs text-center rounded-xl border-2 border-slate-100 bg-white peer-checked:border-green-600 peer-checked:bg-green-50 transition font-bold text-slate-600 peer-checked:text-green-700">Blue</div>
                                     </label>
                                 </div>
                             </div>
