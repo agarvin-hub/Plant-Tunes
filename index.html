@@ -372,24 +372,36 @@
             const name = document.getElementById('p-name').value;
             const email = document.getElementById('p-email').value;
             const address = document.getElementById('p-address').value;
-            const color = document.querySelector('input[name="color"]:checked').value;
+            const colorSelection = document.querySelector('input[name="color"]:checked');
+            const color = colorSelection ? colorSelection.value : "Not specified";
 
+            // Updated recipients as per request
             const recipient1 = "agarvin@sch.org";
             const recipient2 = "tbland@sch.org";
+            
             const subject = encodeURIComponent(`New Plant Tunes Pre-Order: ${name}`);
             const body = encodeURIComponent(
-                `New Pre-Order Received!\n\n` +
+                `Hello Plant Tunes Team,\n\n` +
+                `You have a new pre-order reservation!\n\n` +
+                `Customer Details:\n` +
+                `------------------\n` +
                 `Name: ${name}\n` +
                 `Email: ${email}\n` +
-                `Color Selected: ${color}\n` +
+                `Color Choice: ${color}\n` +
                 `Shipping Address: ${address}\n\n` +
-                `--- End of Order ---`
+                `Please verify the Venmo payment and process the order accordingly.\n\n` +
+                `Best regards,\n` +
+                `Plant Tunes Automation`
             );
 
+            // Opens default mail client
             const mailtoLink = `mailto:${recipient1},${recipient2}?subject=${subject}&body=${body}`;
             window.location.href = mailtoLink;
+            
+            // Opens Venmo in a new tab
             window.open('https://venmo.com/u/planttunes', '_blank');
 
+            // Show success UI
             document.getElementById('preorder-step-2').classList.add('hidden');
             document.getElementById('preorder-success').classList.remove('hidden');
             document.getElementById('progress-bar').style.width = '100%';
