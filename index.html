@@ -169,42 +169,42 @@
                                 <img src="https://lh3.googleusercontent.com/d/1VpjyauLw2vSbEphY0-a9O_e4BDu6V9ci" alt="Obsidian Black" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                             </div>
                             <h3 class="font-bold text-slate-800">Obsidian Black</h3>
-                            <p class="text-green-700 font-semibold">$35</p>
+                            <p class="text-green-700 font-semibold">$44.99</p>
                         </div>
                         <div class="group cursor-pointer" onclick="showPage('preorder')">
                             <div class="aspect-square rounded-3xl mb-4 overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-300">
                                 <img src="https://lh3.googleusercontent.com/d/1HOfjw6RYQsr4hfFdTsUSbneHyoYYzVII" alt="Modern White" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                             </div>
                             <h3 class="font-bold text-slate-800">Modern White</h3>
-                            <p class="text-green-700 font-semibold">$35</p>
+                            <p class="text-green-700 font-semibold">$44.99</p>
                         </div>
                         <div class="group cursor-pointer" onclick="showPage('preorder')">
                             <div class="aspect-square rounded-3xl mb-4 overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-300">
                                 <img src="https://lh3.googleusercontent.com/d/1_mObCghjczDcjm2FEhGE-_eoJUSdysqQ" alt="Stone Grey" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                             </div>
                             <h3 class="font-bold text-slate-800">Stone Grey</h3>
-                            <p class="text-green-700 font-semibold">$35</p>
+                            <p class="text-green-700 font-semibold">$44.99</p>
                         </div>
                         <div class="group cursor-pointer" onclick="showPage('preorder')">
                             <div class="aspect-square rounded-3xl mb-4 overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-300">
                                 <img src="https://lh3.googleusercontent.com/d/1vOrakNEpwmtt8pQz-92DunDzWPgiBx1z" alt="Dark Grey" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                             </div>
                             <h3 class="font-bold text-slate-800">Dark Grey</h3>
-                            <p class="text-green-700 font-semibold">$35</p>
+                            <p class="text-green-700 font-semibold">$44.99</p>
                         </div>
                         <div class="group cursor-pointer" onclick="showPage('preorder')">
                             <div class="aspect-square rounded-3xl mb-4 overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-300">
                                 <img src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&q=80&w=400" alt="Forest Green" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                             </div>
                             <h3 class="font-bold text-slate-800">Forest Green</h3>
-                            <p class="text-green-700 font-semibold">$35</p>
+                            <p class="text-green-700 font-semibold">$44.99</p>
                         </div>
                         <div class="group cursor-pointer" onclick="showPage('preorder')">
                             <div class="aspect-square rounded-3xl mb-4 overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-300">
                                 <img src="https://lh3.googleusercontent.com/d/1lPSSFzijJx4NW9O15ePOc7M4jRRexAVy" alt="Midnight Blue" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                             </div>
                             <h3 class="font-bold text-slate-800">Midnight Blue</h3>
-                            <p class="text-green-700 font-semibold">$35</p>
+                            <p class="text-green-700 font-semibold">$44.99</p>
                         </div>
                     </div>
                 </div>
@@ -364,3 +364,71 @@
             document.getElementById('preorder-page').style.display = pageId === 'preorder' ? 'block' : 'none';
             document.getElementById('nav-links').style.visibility = pageId === 'preorder' ? 'hidden' : 'visible';
             window.scrollTo(0,0);
+            if(pageId === 'preorder') resetForm();
+        }
+
+        function resetForm() {
+            document.getElementById('preorder-step-1').classList.remove('hidden');
+            document.getElementById('preorder-step-2').classList.add('hidden');
+            document.getElementById('preorder-success').classList.add('hidden');
+            document.getElementById('progress-bar').style.width = '33%';
+            document.getElementById('error-msg').classList.add('hidden');
+        }
+
+        function nextStep() {
+            if(!document.getElementById('p-name').value || !document.getElementById('p-email').value) return;
+            document.getElementById('preorder-step-1').classList.add('hidden');
+            document.getElementById('preorder-step-2').classList.remove('hidden');
+            document.getElementById('progress-bar').style.width = '66%';
+        }
+
+        function prevStep() {
+            document.getElementById('preorder-step-2').classList.add('hidden');
+            document.getElementById('preorder-step-1').classList.remove('hidden');
+            document.getElementById('progress-bar').style.width = '33%';
+        }
+
+        function finalSubmit() {
+            const name = document.getElementById('p-name').value;
+            const email = document.getElementById('p-email').value;
+            const address = document.getElementById('p-address').value;
+            const colorSelection = document.querySelector('input[name="color"]:checked');
+            const color = colorSelection ? colorSelection.value : "Not specified";
+            const errorMsg = document.getElementById('error-msg');
+
+            if (!address) {
+                errorMsg.classList.remove('hidden');
+                return;
+            }
+
+            errorMsg.classList.add('hidden');
+
+            // Your team's email addresses
+            const recipients = ["agarvin@sch.org", "tbland@sch.org"];
+            
+            const subject = encodeURIComponent(`New Plant Tunes Pre-Order: ${name}`);
+            const body = encodeURIComponent(
+                `Hello Plant Tunes Team,\n\n` +
+                `A new pre-order reservation has been submitted through the website!\n\n` +
+                `ORDER DETAILS:\n` +
+                `--------------\n` +
+                `Customer Name: ${name}\n` +
+                `Customer Email: ${email}\n` +
+                `Color Selected: ${color}\n` +
+                `Shipping Address: ${address}\n\n` +
+                `Payment Status: Customer was directed to Venmo (@planttunes) for the $44.99 payment.\n\n` +
+                `Please follow up once payment is confirmed.`
+            );
+
+            // Open the user's email client
+            const mailtoLink = `mailto:${recipients.join(',')}?subject=${subject}&body=${body}`;
+            window.location.href = mailtoLink;
+            
+            // Navigate to success page immediately
+            document.getElementById('preorder-step-2').classList.add('hidden');
+            document.getElementById('preorder-success').classList.remove('hidden');
+            document.getElementById('progress-bar').style.width = '100%';
+        }
+    </script>
+</body>
+</html>
