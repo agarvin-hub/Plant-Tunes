@@ -187,7 +187,7 @@
                         </div>
                         <div class="group cursor-pointer" onclick="showPage('preorder')">
                             <div class="aspect-square rounded-3xl mb-4 overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-300">
-                                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400" alt="Forest Green" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                                <img src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&q=80&w=400" alt="Forest Green" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                             </div>
                             <h3 class="font-bold text-slate-800">Forest Green</h3>
                             <p class="text-green-700 font-semibold">$35</p>
@@ -296,7 +296,7 @@
                     </div>
 
                     <div id="preorder-step-2" class="hidden">
-                        <h2 class="text-4xl font-bold text-slate-900 mb-2">Payment</h2>
+                        <h2 class="text-4xl font-bold text-slate-900 mb-2">Payment & Delivery</h2>
                         <p class="text-slate-500 mb-10">Step 2: Shipping & Payment</p>
                         <div class="space-y-6">
                             <div class="space-y-2">
@@ -306,11 +306,19 @@
                             <div class="bg-blue-50 border border-blue-100 p-6 rounded-2xl">
                                 <h4 class="font-bold text-blue-900 mb-2">Venmo Instructions</h4>
                                 <p class="text-sm text-blue-800 mb-4">Pay via Venmo to complete your reservation. Use your name as the note.</p>
-                                <button onclick="finalSubmit()" class="flex items-center justify-center space-x-3 w-full py-4 bg-[#3d95ce] text-white rounded-xl font-bold text-lg hover:bg-[#3480b0] transition">
+                                <a href="https://venmo.com/u/planttunes" target="_blank" class="flex items-center justify-center space-x-3 w-full py-4 bg-[#3d95ce] text-white rounded-xl font-bold text-lg hover:bg-[#3480b0] transition mb-4">
                                     <span>Pay with Venmo</span>
-                                </button>
+                                </a>
+                                <p class="text-xs text-slate-500 text-center">After completing your payment, click the <strong>Submit</strong> button below to send your pre-order information to us!</p>
                             </div>
-                            <button onclick="prevStep()" class="w-full text-slate-400 font-medium">Go back</button>
+                            
+                            <!-- Submit Button -->
+                            <button id="venmo-btn" onclick="finalSubmit()" class="w-full py-5 bg-green-800 text-white rounded-xl font-bold text-lg hover:bg-green-700 transition shadow-lg">
+                                Submit Pre-Order
+                            </button>
+                            <p id="error-msg" class="text-xs text-red-600 mt-2 text-center hidden">Please fill in your address first.</p>
+                            
+                            <button onclick="prevStep()" class="w-full text-slate-400 font-medium text-center hover:text-slate-600 transition">Go back</button>
                         </div>
                     </div>
 
@@ -353,6 +361,7 @@
             document.getElementById('preorder-step-2').classList.add('hidden');
             document.getElementById('preorder-success').classList.add('hidden');
             document.getElementById('progress-bar').style.width = '33%';
+            document.getElementById('error-msg').classList.add('hidden');
         }
 
         function nextStep() {
@@ -374,34 +383,37 @@
             const address = document.getElementById('p-address').value;
             const colorSelection = document.querySelector('input[name="color"]:checked');
             const color = colorSelection ? colorSelection.value : "Not specified";
+            const errorMsg = document.getElementById('error-msg');
 
-            // Updated recipients as per request
-            const recipient1 = "agarvin@sch.org";
-            const recipient2 = "tbland@sch.org";
+            if (!address) {
+                errorMsg.classList.remove('hidden');
+                return;
+            }
+
+            errorMsg.classList.add('hidden');
+
+            // Your team's email addresses
+            const recipients = ["agarvin@sch.org", "tbland@sch.org"];
             
             const subject = encodeURIComponent(`New Plant Tunes Pre-Order: ${name}`);
             const body = encodeURIComponent(
                 `Hello Plant Tunes Team,\n\n` +
-                `You have a new pre-order reservation!\n\n` +
-                `Customer Details:\n` +
-                `------------------\n` +
-                `Name: ${name}\n` +
-                `Email: ${email}\n` +
-                `Color Choice: ${color}\n` +
+                `A new pre-order reservation has been submitted through the website!\n\n` +
+                `ORDER DETAILS:\n` +
+                `--------------\n` +
+                `Customer Name: ${name}\n` +
+                `Customer Email: ${email}\n` +
+                `Color Selected: ${color}\n` +
                 `Shipping Address: ${address}\n\n` +
-                `Please verify the Venmo payment and process the order accordingly.\n\n` +
-                `Best regards,\n` +
-                `Plant Tunes Automation`
+                `Payment Status: Customer was directed to Venmo (@planttunes) for the $35 payment.\n\n` +
+                `Please follow up once payment is confirmed.`
             );
 
-            // Opens default mail client
-            const mailtoLink = `mailto:${recipient1},${recipient2}?subject=${subject}&body=${body}`;
+            // Open the user's email client
+            const mailtoLink = `mailto:${recipients.join(',')}?subject=${subject}&body=${body}`;
             window.location.href = mailtoLink;
             
-            // Opens Venmo in a new tab
-            window.open('https://venmo.com/u/planttunes', '_blank');
-
-            // Show success UI
+            // Navigate to success page immediately
             document.getElementById('preorder-step-2').classList.add('hidden');
             document.getElementById('preorder-success').classList.remove('hidden');
             document.getElementById('progress-bar').style.width = '100%';
