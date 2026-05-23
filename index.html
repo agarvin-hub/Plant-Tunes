@@ -424,26 +424,17 @@
                 }).catch(err => console.log("Background sheet submission failed: ", err));
             }
 
-            // Your team's email addresses as fallback/double verification
-            const recipients = ["agarvin@sch.org", "tbland@sch.org"];
-            
-            const subject = encodeURIComponent(`New Plant Tunes Pre-Order: ${name}`);
-            const body = encodeURIComponent(
-                `Hello Plant Tunes Team,\n\n` +
-                `A new pre-order reservation has been submitted through the website!\n\n` +
-                `ORDER DETAILS:\n` +
-                `--------------\n` +
-                `Customer Name: ${name}\n` +
-                `Customer Email: ${email}\n` +
-                `Color Selected: ${color}\n` +
-                `Shipping Address: ${address}\n\n` +
-                `Payment Status: Customer was directed to Venmo (@planttunes) for the $44.99 payment.\n\n` +
-                `Please follow up once payment is confirmed.`
-            );
+            // Text message payload construction
+            const smsText = `New Plant Tunes Pre-Order!\nName: ${name}\nEmail: ${email}\nColor: ${color}\nAddress: ${address}`;
+            const body = encodeURIComponent(smsText);
 
-            // Open the user's email client
-            const mailtoLink = `mailto:${recipients.join(',')}?subject=${subject}&body=${body}`;
-            window.location.href = mailtoLink;
+            // Detect mobile platform for proper SMS link character delimiters
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            const separator = isIOS ? '&' : '?';
+            const smsLink = `sms:+14846559885${separator}body=${body}`;
+
+            // Launch native messaging client on mobile/desktop
+            window.location.href = smsLink;
             
             // Navigate to success page immediately
             document.getElementById('preorder-step-2').classList.add('hidden');
