@@ -239,7 +239,7 @@
                         <p class="text-lg md:text-xl text-slate-700 leading-relaxed font-medium">
                             Our product blends two everyday household items into one smart, stylish solution by combining a hanging plant with a built-in speaker. Many homes already have plants in corners and bulky speakers beneath them, so this design saves space while simplifying setup. Instead of dealing with a large, messy speaker and visible wires, everything is cleanly integrated into one aesthetic piece. It helps eliminate clutter and creates a more organized, modern look in any room. 
                         </p>
-                        <div class="w-16 h-1 bg-green-200 mx-auto my-8"></div>
+                        <div class="w-16 h-1 bg-green-200 mx-auto My-8"></div>
                         <p class="text-lg md:text-xl text-slate-700 leading-relaxed font-medium">
                             The design also encourages more people to bring plants into their homes, helping them feel more connected to nature. Plants are known to help reduce stress, ease anxiety, and improve focus, making your environment feel calmer and more enjoyable. Overall, the product delivers both functional audio and natural beauty, turning something ordinary into something innovative and relaxing.
                         </p>
@@ -277,6 +277,17 @@
                                 <label class="block text-sm font-bold text-slate-700">Email</label>
                                 <input type="email" id="p-email" placeholder="Email Address" class="w-full px-5 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:border-green-500 transition">
                             </div>
+                            
+                            <!-- Quantity Section -->
+                            <div class="space-y-2">
+                                <label class="block text-sm font-bold text-slate-700">Quantity</label>
+                                <div class="flex items-center space-x-4 bg-slate-50 border border-slate-200 p-2 rounded-xl w-40">
+                                    <button type="button" onclick="adjustQuantity(-1)" class="w-10 h-10 bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 rounded-lg font-bold text-xl flex items-center justify-center transition">-</button>
+                                    <input type="number" id="p-quantity" value="1" min="1" readonly class="w-12 text-center bg-transparent border-none focus:ring-0 font-bold text-slate-800 text-lg">
+                                    <button type="button" onclick="adjustQuantity(1)" class="w-10 h-10 bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 rounded-lg font-bold text-xl flex items-center justify-center transition">+</button>
+                                </div>
+                            </div>
+
                             <div class="space-y-2">
                                 <label class="block text-sm font-bold text-slate-700">Color Choice</label>
                                 <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -320,7 +331,8 @@
                             </div>
                             <div class="bg-blue-50 border border-blue-100 p-6 rounded-2xl">
                                 <h4 class="font-bold text-blue-900 mb-2">Venmo Instructions</h4>
-                                <p class="text-sm text-blue-800 mb-4">Pay via Venmo to complete your reservation. Use your name as the note.</p>
+                                <p class="text-sm text-blue-800 mb-2">Pay via Venmo to complete your reservation. Use your name as the note.</p>
+                                <p class="text-base font-bold text-slate-800 mb-4" id="order-summary-price">Total Amount Due: $44.99</p>
                                 <a href="https://venmo.com/u/planttunes" target="_blank" class="flex items-center justify-center space-x-3 w-full py-4 bg-[#3d95ce] text-white rounded-xl font-bold text-lg hover:bg-[#3480b0] transition mb-4">
                                     <span>Pay with Venmo</span>
                                 </a>
@@ -363,6 +375,8 @@
     </footer>
 
     <script>
+        const PRICE_PER_UNIT = 44.99;
+
         function showPage(pageId) {
             document.getElementById('home-page').style.display = pageId === 'home' ? 'block' : 'none';
             document.getElementById('preorder-page').style.display = pageId === 'preorder' ? 'block' : 'none';
@@ -381,6 +395,23 @@
             document.getElementById('p-name').value = '';
             document.getElementById('p-email').value = '';
             document.getElementById('p-address').value = '';
+            document.getElementById('p-quantity').value = '1';
+            updatePriceDisplay();
+        }
+
+        function adjustQuantity(amount) {
+            const quantityInput = document.getElementById('p-quantity');
+            let currentVal = parseInt(quantityInput.value) || 1;
+            currentVal += amount;
+            if (currentVal < 1) currentVal = 1;
+            quantityInput.value = currentVal;
+            updatePriceDisplay();
+        }
+
+        function updatePriceDisplay() {
+            const qty = parseInt(document.getElementById('p-quantity').value) || 1;
+            const total = (qty * PRICE_PER_UNIT).toFixed(2);
+            document.getElementById('order-summary-price').textContent = `Total Amount Due: $${total} (${qty} x $${PRICE_PER_UNIT})`;
         }
 
         function nextStep() {
@@ -401,6 +432,8 @@
             const phone = document.getElementById('p-phone').value;
             const email = document.getElementById('p-email').value;
             const address = document.getElementById('p-address').value;
+            const quantity = document.getElementById('p-quantity').value;
+            const totalCost = (parseInt(quantity) * PRICE_PER_UNIT).toFixed(2);
             const colorSelection = document.querySelector('input[name="color"]:checked');
             const color = colorSelection ? colorSelection.value : "Not specified";
             const errorMsg = document.getElementById('error-msg');
@@ -413,9 +446,8 @@
             errorMsg.classList.add('hidden');
 
             // --- GOOGLE SHEETS REDIRECT SETUP ---
-            // We can send the data to a Google Apps Script receiver Web App or a Google Form background post.
             // Replace the URL inside 'YOUR_WEB_APP_URL' once you configure Google Sheets App Script (Instructions below!).
-            const webAppUrl = "https://script.google.com/u/0/home/projects/1NkQnM3yclcsXn3Xv377j6Iy5c3suzu46Hyx8nwcrCYQPAvqSGn9XpkQS/edit"; // Leave empty for direct mailto fallback or populate with Web App Link
+            const webAppUrl = "https://script.google.com/u/0/home/projects/1NkQnM3yclcsXn3Xv377j6Iy5c3suzu46Hyx8nwcrCYQPAvqSGn9XpkQS/edit"; // Populate with Web App Link
 
             if (webAppUrl) {
                 // Background submission to Google Sheets
@@ -425,6 +457,8 @@
                 formData.append("phone", phone);
                 formData.append("email", email);
                 formData.append("color", color);
+                formData.append("quantity", quantity);
+                formData.append("total", totalCost);
                 formData.append("address", address);
 
                 fetch(webAppUrl, {
@@ -435,7 +469,7 @@
             }
 
             // Text message payload construction
-            const smsText = `New Plant Tunes Pre-Order!\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nColor: ${color}\nAddress: ${address}`;
+            const smsText = `New Plant Tunes Pre-Order!\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nQuantity: ${quantity}\nTotal Due: $${totalCost}\nColor: ${color}\nAddress: ${address}`;
             const body = encodeURIComponent(smsText);
 
             // Detect mobile platform for proper SMS link character delimiters
